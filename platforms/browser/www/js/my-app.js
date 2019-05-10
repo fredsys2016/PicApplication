@@ -38,17 +38,24 @@ function pic()
 function cameraCallBack(image)
 {
     var img=document.getElementById("containerCam");
-    img.scr=image;
+    img.scr="data.image/jpeg;base64,"+image;
+    document.getElementById('msg').textContent = image;
+    document.getElementById('photo').src = image;
 }
 
 function onError(msg)
 {console.log(msg.message);}
 
 var opt={
-        quality:80,
-        encodingType: Camera.EncodingType.JPEG,
-        cameraDirection: Camera.Direction.BACK,
-        destinationType: Camera.DestinationType.FILE_URI,
-        mediaType: Camera.MediaType.PICTURE,
-        saveToPhotoAlbum: TRUE
+    quality: 80,
+    destinationType: Camera.DestinationType.FILE_URI,
+    sourceType: Camera.PictureSourceType.CAMERA,
+    mediaType: Camera.MediaType.PICTURE,
+    encodingType: Camera.EncodingType.JPEG,
+    cameraDirection: Camera.Direction.BACK,
+    targetWidth: 200,
+    targetHeight: 300,
+    saveToPhotoAlbum:Camara.SaveToPhotoAlbum.true
     };
+
+    
