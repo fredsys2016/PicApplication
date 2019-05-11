@@ -13,3 +13,17 @@
 .statusbar-overlay {
     background: #000000;
 }
+.containerMid{
+    position: absolute;
+    right: 35%;
+    left: 35%;
+    text-align: center;
+}
+
+.btn{
+    margin: 10px;
+    background: #006699;
+    width: 100px;
+    font-size: 14px;
+    text-transform: lowercase;
+}

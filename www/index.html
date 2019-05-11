@@ -21,6 +21,16 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
+
+
+        <link rel="stylesheet" href="lib/framework7/css/framework7.css">    
+        <link rel="stylesheet" href="lib/framework7/css/framework7.min.css">
+        
+        <link rel="stylesheet" href="lib/framework7/css/framework7.bundle.css">
+        <link rel="stylesheet" href="lib/framework7/css/framework7.bundle.min.css"> 
+        
+
+
     <!-- Your app title -->
     <title>My App</title>
 
@@ -28,72 +38,62 @@
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
      -->
 
-    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
-
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
+    <div id="app">
+       <!-- Statusbar overlay -->
+      <div class="statusbar"></div>
+              
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
 
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-        <div class="content-block">
-            <p>Left panel content goes here</p>
-        </div>
-    </div>
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title containerMid">Pic Application</div>
+            </div>
+          </div>
 
-    <!-- Views -->
-    <div class="views">
-        <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main">
-            <!-- Top Navbar-->
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">Awesome App</div>
-                    <div class="right">
-                        <!--
-                          Right link contains only icon - additional "icon-only" class
-                          Additional "open-panel" class tells app to open panel when we click on this link
-                        -->
-                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-                    </div>
-                </div>
+          <!-- Bottom Toolbar -->
+          <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner">
+              <!-- Toolbar links -->
+              <div class="containerMid"> &copy; FredSys-2019</div>
             </div>
-            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-            <div class="pages navbar-through toolbar-through">
-                <!-- Page, "data-page" contains page name -->
-                <div data-page="index" class="page">
-                    <!-- Scrollable page content -->
-                    <div class="page-content">
-                        <div class="content-block">
-                            <button class="button " onclick="pic()">Take <Picture></Picture></button>
-                            <div id="containerCam"></div>
-                            <div> <img src="" id="photo"> </div>
-                            <p id="msg"></p>
-                        </div>
-                    </div>
-                </div>
+          </div>
+
+          <!-- Scrollable page content -->
+          <div class="page-content">
+            <div class="block">
+              <!--Page content goes here-->
+              <div class="containerMid"> 
+                <button class="button button-fill btn" onclick="">Take Picture</button>
+                <div id="containerCamera>Camera"></div>
+                <div id="Photo"> </div>
+                <p id="msg"></p>
+                <button class="button button-fill btn" onclick="openCamera()">Take Picture</button>
+                
+              </div>
+
             </div>
-            <!-- Bottom Toolbar-->
-            <div class="toolbar">
-                <div class="toolbar-inner">
-                    <!-- Toolbar links -->
-                    <a href="#" class="link">Link 1</a>
-                    <a href="#" class="link">Link 2</a>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>                    
+      <!-- Your main view, should have "view-main" class -->
+      </div>
 
     <script type="text/javascript" src="cordova.js"></script>
+    
+    <script type="text/javascript" src="./lib/framework7/js/framework7.js"></script>
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.bundle.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.bundle.min.js"></script>
+        
+        
     <script type="text/javascript" src="js/my-app.js"></script>
-</body>
+  </body>
 
 </html>

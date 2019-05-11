@@ -1,50 +1,28 @@
-// Initialize app
-var myApp = new Framework7();
 
-
-// If we need to use custom DOM library, let's save it to $$ variable:
+var app = new Framework7({
+  root: '#app',
+  name:'Pic_Application',
+  id:'com.Pic_Application.test'
+});
 var $$ = Dom7;
-
-// Add view
-var mainView = myApp.addView('.view-main', {
-    // Because we want to use dynamic navbar, we need to enable it for this view:
-    dynamicNavbar: true
-});
-
-// Handle Cordova Device Ready Event
-$$(document).on('deviceready', function() {
-    console.log("Device is ready!");
-});
-
-// Now we need to run the code that will be executed only for About page.
-
-// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
-myApp.onPageInit('about', function (page) {
-    // Do something here for "about" page
-    console.log(navigator.camera);
-})
+var mainView = app.views.create('.view-main');
 
 
+  function openCamera(){
+    navigator.camera.getPicture(cameraCallBack, onError,opt);
+  }
 
-function pic()
-{
-    //console.log(navigator.camera);
-    navigator.camera.getPicture(cameraCallBack, onError, opt);
-    
-}
+  function cameraCallBack(imgData)
+  {
+    var image=document.getElementById('containerCamera');
+    image.scr=img.scr="data.image/jpeg;base64,"+imgData;
+    document.getElementById('msg').textContent = imgData;
+    document.getElementById('photo').src = imgData;
+  }
+  function onError(msg)
+  {alert(msg);}
 
-function cameraCallBack(image)
-{
-    var img=document.getElementById("containerCam");
-    img.scr="data.image/jpeg;base64,"+image;
-    document.getElementById('msg').textContent = image;
-    document.getElementById('photo').src = image;
-}
-
-function onError(msg)
-{console.log(msg.message);}
-
-var opt={
+  var opt = {
     quality: 80,
     destinationType: Camera.DestinationType.FILE_URI,
     sourceType: Camera.PictureSourceType.CAMERA,
@@ -55,5 +33,3 @@ var opt={
     targetHeight: 300,
     saveToPhotoAlbum:Camara.SaveToPhotoAlbum.true
     };
-
-    
